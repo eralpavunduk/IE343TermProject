@@ -29,9 +29,7 @@ public class main {
 		weightList.add(Integer.parseInt(list.get(i).get(5)));
 		
 		
-		}
-	
-	
+	}
 	List<List<String>> list1 = readSequential();
 	List<ArrayList<Double>> sequential_data = new ArrayList<ArrayList<Double>>();
 	for (int i=1;i<list1.size();i++){
@@ -68,112 +66,112 @@ public class main {
 	     int[][] keep = new int[51][(capacity+1)];
          double maxGain = knapsack(duration, value, capacity, keep);
          System.out.println(maxGain);
+  
          
-         
-         
-        double max =0;
-        double secmax=0;
-        int Row_max=0;
-        int Column_max=0;
-        int Row_secmax=0;
-        int Column_secmax=0;
-        
-        int[] path= new int[50];
-      
-        
-        
-         for(int i=0; i<50; i++) {
-        	 double[] array= new double[50];
-        
-      	   for(int j=0; j<50; j++) {
-      
-      		 array[j] =sequential_data.get(i).get(j);
-
-             if (array[j] > max) {
-            	 secmax=max;
-            	 Row_secmax=Row_max;
-            	 Column_secmax=Column_max;
-                 max = array[j];
-                 Row_max=i+1;
-                 Column_max=j+1;
-             }
-      		 
-      	        }
-      	 
-      	 }
-         path[0]= Row_max;
-         path[1]=Column_max;
-         path[48]=Row_secmax;
-         path[49]=Column_secmax;
-         
-         for(int i=2; i<48; i++) {
-        
-        	 path[i]=i;
-        	
-        	
-        }
-        int count=0;
-         
-         for(int i=0; i<50; i++) {
-        	 
-        	 if(path[i]==Row_max ) {
-        		 count=count+1;
-        		 
-        	 } if(count==2 ) {
-        		 path[i]=0;
-        		 count=0;
-        		 break;
-        	 }
-        	 
-         }
-  for(int i=0; i<50; i++) {
-        	 
-        	 if(path[i]==Column_max ) {
-        		 count=count+1;
-        		 
-        	 } if(count==2 ) {
-        		 path[i]=1;
-        		 count=0;
-        		 break;
-        	 }
-        	 
-         }
-  for(int i=0; i<50; i++) {
- 	 
- 	 if(path[i]==Row_secmax ) {
- 		 count=count+1;
- 		 
- 	 } if(count==1 ) {
- 		 path[i]=48;
- 		 count=0;
- 		 break;
- 	 }
- 	 
-  }
-  for(int i=0; i<50; i++) {
- 	 
- 	 if(path[i]==Column_secmax ) {
- 		 count=count+1;
- 		 
- 	 } if(count== 1) {
- 		 path[i]=49;
- 		 count=0;
- 		 break;
- 	 }
-  }
-         
-         
-         System.out.println(max+ " " + "["+Row_max+","+Column_max+"]");
-         System.out.println(secmax+ " "+ "["+Row_secmax+ ","+ Column_secmax+ "]");
-         System.out.println();
-         for(int i=0; i<50; i++) {
-        	 System.out.print(path[i]+" ");
-        	 
-         }
-         
-         }
-         
+         int max =0;
+         int secmax=0;
+        int  countmax=0;
+        int countsecmax=0;
+    	 int songs[] = new int[valueList.size()];
+			
+			for(int i= 0; i<songs.length; i++) {
+				
+				songs[i]= valueList.get(i);
+	         
+			}
+			  for(int j=0; j<50; j++) {
+			      
+		             if (songs[j] > max) {
+		            	 
+		            	 
+		                 max = songs[j];
+		                 countmax=j;
+		                 
+		             }
+		        		 
+		      	        }
+			  songs[countmax]=0;
+			  for(int j=0; j<50; j++) {
+			      
+		             if (songs[j] > secmax) {
+		            	 
+		            	 
+		                 secmax = songs[j];
+		                 countsecmax=j;
+		                 
+		             }
+		        		 
+		      	        }
+			  
+			  
+			  
+			System.out.println(max+ " "+ countmax + " ");
+			System.out.println(secmax+ " "+countsecmax);
+		
+		  
+		    double maks=0;
+		    int countmaks=0;
 	     
+		    double matriks[][]=new double[50][50];
+		    int[]yol= new int[50];
+		    double[] dummy=new double[50];
+		    double dummy2=0;
+		    for(int i=0; i<50; i++) {
+		    	for(int j=0; j<50; j++) {
+		    		matriks[i][j]=sequential_data.get(i).get(j);
+		    		
+		    	}
+		    	
+		    
+		    }
+	      
+	        
+	        	 for(int j=0; j<50; j++) {
+	        		 for(int k=0; k<50; k++) {
+	        			 
+	        			  if (matriks[j][k] > maks) {
+	 		            	 
+	 		                 maks = matriks[j][k];
+	 		                 countmaks=k;
+	 		               
+	 		             }
+	       
+	        		 }
+	        		 if(j+1==50) {
+	        			 break;
+	        		 }
+	        		 dummy=matriks[j+1];
+	        		 matriks[j+1]=matriks[countmaks];
+	        		 matriks[countmaks]=dummy;
+	        		 yol[j]=countmaks;
+	        		 for(int b=0; b<50; b++) {
+	        			 
+	        				dummy2= matriks[b][j+1];
+	        				matriks[b][j+1]=matriks[b][countmaks];
+	        				matriks[b][countmaks]=dummy2;
+	        				
+	        				
+	        			 
+	        		 }
+	        		 for(int a =0; a<50; a++) {
+	        			 matriks[a][j]=0;
+	        			 matriks[j][a]=0;
+	        			 
+	        		 }
+	        		 
+	        	     maks=0;
+	        	     countmaks=0;
+	        		 
+	        	 }	
+	        	  yol[0]=countmax;
+	  	          yol[49]=countsecmax;
+	         
+	         
+	         for(int i=0; i<50; i++) {
+	        	 System.out.print(yol[i]+ " ");
+	         }
+         }
+	   
 	   private static double knapsack(int[] w, int[] v, int W, int[][] keep) {
            int[][] matrix = new int[w.length + 1][W + 1];
            int[] solution = new int[w.length+1];
@@ -299,4 +297,5 @@ public class main {
 	
 	
 }
+
 
