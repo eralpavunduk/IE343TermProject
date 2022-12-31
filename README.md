@@ -21,13 +21,19 @@ There is a 34,76 point difference with Berk's solution.
 
 Q2
 
-For this question, there was only two songs was important for consultant. To changing songs has values. 
-So, we determined these songs values first. 
+For this question, there was only two songs was important for consultant. Firstly, we determined the most valuable and second valuble songs from song sheet.
 
-Having most path value of songs are 43 to 28 with 9.87. Therefore we choosed the first and second songs as 43 and 28. 
-Second most path value songs has 4 to 3 with 9.51. So we placed those songs as last ones. Because of having no other condition. We sorted other songs in an order 
-like below and put the songs that we cut replaced to songs which has the highest path values.
+46 0 
+44 1
 
-43 28 2 49 48 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 1 29 30 31 32 33 34 35 36 37 38 39 40 41 42 0 44 45 46 47 4 3 
+First song has 46 value and it is in the first queue of the songs. Second has 44 value and this song is after the first song.
+After that, we organized an array which has the first is 46 and the last song has value of 44.
+For solution, we tried to find most valueable transitions to pick which song has to be the next song. In the code, we tried to search the array of values of a specific songs transitions to other songs.
+ We found the highest values and lifting up this song to chosen songs for searching rest of the songs. 
+Our solution path is:
+
+0 18 36 4 15 49 45 49 46 15 34 46 36 18 25 46 41 20 23 40 37 33 38 40 40 31 44 33 42 44 41 43 36 36 36 44 45 38 41 48 42 46 49 45 49 46 49 49 49 1 
+
+
 
 
