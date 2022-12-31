@@ -79,7 +79,7 @@ public class main {
         int Column_secmax=0;
         
         int[] path= new int[50];
-        int dummy=0;
+      
         
         
          for(int i=0; i<50; i++) {
@@ -112,7 +112,57 @@ public class main {
         	
         	
         }
-
+        int count=0;
+         
+         for(int i=0; i<50; i++) {
+        	 
+        	 if(path[i]==Row_max ) {
+        		 count=count+1;
+        		 
+        	 } if(count==2 ) {
+        		 path[i]=0;
+        		 count=0;
+        		 break;
+        	 }
+        	 
+         }
+  for(int i=0; i<50; i++) {
+        	 
+        	 if(path[i]==Column_max ) {
+        		 count=count+1;
+        		 
+        	 } if(count==2 ) {
+        		 path[i]=1;
+        		 count=0;
+        		 break;
+        	 }
+        	 
+         }
+  for(int i=0; i<50; i++) {
+ 	 
+ 	 if(path[i]==Row_secmax ) {
+ 		 count=count+1;
+ 		 
+ 	 } if(count==1 ) {
+ 		 path[i]=48;
+ 		 count=0;
+ 		 break;
+ 	 }
+ 	 
+  }
+  for(int i=0; i<50; i++) {
+ 	 
+ 	 if(path[i]==Column_secmax ) {
+ 		 count=count+1;
+ 		 
+ 	 } if(count== 1) {
+ 		 path[i]=49;
+ 		 count=0;
+ 		 break;
+ 	 }
+  }
+         
+         
          System.out.println(max+ " " + "["+Row_max+","+Column_max+"]");
          System.out.println(secmax+ " "+ "["+Row_secmax+ ","+ Column_secmax+ "]");
          System.out.println();
@@ -249,3 +299,4 @@ public class main {
 	
 	
 }
+
